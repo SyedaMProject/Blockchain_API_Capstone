@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Result</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #1d2671, #c33764); /* Gradient background */
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .result-card {
+            background: rgba(255, 255, 255, 0.1); /* Transparent white */
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .result-card h1 {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .result-card p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .result-card a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background: linear-gradient(135deg, #4caf50, #2e7d32);
+            padding: 10px 15px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .result-card a:hover {
+            background: linear-gradient(135deg, #66bb6a, #388e3c);
+        }
+    </style>
+</head>
+<body>
+    <div class="result-card">
+        <h1><%= crypto.toUpperCase() %> Price in <%= currency.toUpperCase() %></h1>
+        <p>The current price is: <strong><%= price %> <%= currency.toUpperCase() %></strong></p>
+        <a href="/">Check Another</a>
+    </div>
+</body>
+</html>

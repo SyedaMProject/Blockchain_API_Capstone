@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Price Checker</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        .selector-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .selector-container label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .currency-selector, .crypto-selector {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .currency-selector select,
+        .currency-selector input,
+        .crypto-selector select,
+        .crypto-selector input {
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        input[type="text"] {
+            width: auto;
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crypto Price Checker</h1>
+        <form action="/price" method="POST">
+            <!-- Cryptocurrency Selection -->
+            <div class="selector-container crypto-selector">
+                <label for="crypto">Select Cryptocurrency:</label>
+                <select name="crypto" id="crypto">
+                    <option value="bitcoin">Bitcoin (BTC)</option>
+                    <option value="ethereum">Ethereum (ETH)</option>
+                    <option value="ripple">Ripple (XRP)</option>
+                    <option value="litecoin">Litecoin (LTC)</option>
+                    <option value="dogecoin">Dogecoin (DOGE)</option>
+                    <option value="cardano">Cardano (ADA)</option>
+                    <option value="polkadot">Polkadot (DOT)</option>
+                    <option value="stellar">Stellar (XLM)</option>
+                    <option value="chainlink">Chainlink (LINK)</option>
+                    <option value="binancecoin">Binance Coin (BNB)</option>
+                    <option value="solana">Solana (SOL)</option>
+                    <option value="monero">Monero (XMR)</option>
+                    <option value="tron">Tron (TRX)</option>
+                    <option value="tezos">Tezos (XTZ)</option>
+                    <option value="vechain">VeChain (VET)</option>
+                    <option value="theta">Theta (THETA)</option>
+                    <option value="filecoin">Filecoin (FIL)</option>
+                    <option value="aave">Aave (AAVE)</option>
+                    <option value="cosmos">Cosmos (ATOM)</option>
+                    <option value="dash">Dash (DASH)</option>
+                    <option value="zcash">Zcash (ZEC)</option>
+                    <option value="uniswap">Uniswap (UNI)</option>
+                    <option value="algorand">Algorand (ALGO)</option>
+                    <option value="maker">Maker (MKR)</option>
+                    <option value="compound">Compound (COMP)</option>
+                    <option value="decred">Decred (DCR)</option>
+                    <option value="kusama">Kusama (KSM)</option>
+                    <option value="harmony">Harmony (ONE)</option>
+                    <option value="enjincoin">Enjin Coin (ENJ)</option>
+                    <option value="flow">Flow (FLOW)</option>
+                </select>
+                <input type="text" id="crypto-search" placeholder="Search for a coin" list="coin-list">
+                <datalist id="coin-list">
+                    <option value="Bitcoin (BTC)">
+                    <option value="Ethereum (ETH)">
+                    <option value="Ripple (XRP)">
+                    <option value="Litecoin (LTC)">
+                    <option value="Dogecoin (DOGE)">
+                    <option value="Cardano (ADA)">
+                    <option value="Polkadot (DOT)">
+                    <option value="Stellar (XLM)">
+                    <option value="Chainlink (LINK)">
+                    <option value="Binance Coin (BNB)">
+                    <option value="Solana (SOL)">
+                    <option value="Monero (XMR)">
+                    <option value="Tron (TRX)">
+                    <option value="Tezos (XTZ)">
+                    <option value="VeChain (VET)">
+                    <option value="Theta (THETA)">
+                    <option value="Filecoin (FIL)">
+                    <option value="Aave (AAVE)">
+                    <option value="Cosmos (ATOM)">
+                    <option value="Dash (DASH)">
+                    <option value="Zcash (ZEC)">
+                    <option value="Uniswap (UNI)">
+                    <option value="Algorand (ALGO)">
+                    <option value="Maker (MKR)">
+                    <option value="Compound (COMP)">
+                    <option value="Decred (DCR)">
+                    <option value="Kusama (KSM)">
+                    <option value="Harmony (ONE)">
+                    <option value="Enjin Coin (ENJ)">
+                    <option value="Flow (FLOW)">
+                </datalist>
+            </div>
+
+            <!-- Currency Selection -->
+            <div class="selector-container currency-selector">
+                <label for="currency">Select Currency:</label>
+                <select name="currency" id="currency">
+                    <option value="usd">US Dollar (USD)</option>
+                    <option value="eur">Euro (EUR)</option>
+                    <option value="gbp">British Pound (GBP)</option>
+                    <option value="jpy">Japanese Yen (JPY)</option>
+                    <option value="inr">Indian Rupee (INR)</option>
+                    <option value="cad">Canadian Dollar (CAD)</option>
+                    <option value="aud">Australian Dollar (AUD)</option>
+                    <option value="chf">Swiss Franc (CHF)</option>
+                    <option value="cny">Chinese Yuan (CNY)</option>
+                    <option value="hkd">Hong Kong Dollar (HKD)</option>
+                    <option value="sgd">Singapore Dollar (SGD)</option>
+                    <option value="krw">South Korean Won (KRW)</option>
+                    <option value="mxn">Mexican Peso (MXN)</option>
+                    <option value="zar">South African Rand (ZAR)</option>
+                    <option value="brl">Brazilian Real (BRL)</option>
+                    <option value="rub">Russian Ruble (RUB)</option>
+                    <option value="sek">Swedish Krona (SEK)</option>
+                    <option value="nok">Norwegian Krone (NOK)</option>
+                    <option value="dkk">Danish Krone (DKK)</option>
+                    <option value="pln">Polish Zloty (PLN)</option>
+                    <option value="try">Turkish Lira (TRY)</option>
+                    <option value="idr">Indonesian Rupiah (IDR)</option>
+                    <option value="php">Philippine Peso (PHP)</option>
+                    <option value="thb">Thai Baht (THB)</option>
+                    <option value="vnd">Vietnamese Dong (VND)</option>
+                    <option value="myr">Malaysian Ringgit (MYR)</option>
+                    <option value="twd">New Taiwan Dollar (TWD)</option>
+                    <option value="ils">Israeli Shekel (ILS)</option>
+                    <option value="aed">UAE Dirham (AED)</option>
+                    <option value="sar">Saudi Riyal (SAR)</option>
+                    <option value="pkr">Pakistani Rupee (PKR)</option>
+                </select>
+                <input type="text" id="currency-search" placeholder="Search for a currency" list="country-list">
+                <datalist id="country-list">
+                    <option value="USD">
+                    <option value="EUR">
+                    <option value="GBP">
+                    <option value="INR">
+                    <option value="CAD">
+                </datalist>
+            </div>
+
+            <button type="submit">Get Price</button>
+        </form>
+    </div>
+
+    
+    <script>
+        // Handle Dropdown and Search Behavior
+        const cryptoDropdown = document.getElementById('crypto');
+        const cryptoSearch = document.getElementById('crypto-search');
+    
+        const currencyDropdown = document.getElementById('currency');
+        const currencySearch = document.getElementById('currency-search');
+    
+        // Clear dropdown when search is used
+        cryptoSearch.addEventListener('input', () => {
+            cryptoDropdown.value = '';
+        });
+    
+        // Clear search when dropdown is used
+        cryptoDropdown.addEventListener('change', () => {
+            cryptoSearch.value = '';
+        });
+    
+        // Same logic for currency
+        currencySearch.addEventListener('input', () => {
+            currencyDropdown.value = '';
+        });
+    
+        currencyDropdown.addEventListener('change', () => {
+            currencySearch.value = '';
+        });
+    
+        // Ensure one input is submitted
+        document.querySelector('form').addEventListener('submit', (e) => {
+            if (!cryptoSearch.value && !cryptoDropdown.value) {
+                e.preventDefault();
+                alert('Please select or search for a cryptocurrency.');
+            }
+            if (!currencySearch.value && !currencyDropdown.value) {
+                e.preventDefault();
+                alert('Please select or search for a currency.');
+            }
+        });
+    </script>
+    
+    
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #ff6f61, #d50000);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .error-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            width: 350px;
+        }
+
+        .error-card h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .error-card p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .error-card button {
+            background-color: #e53935;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .error-card button:hover {
+            background-color: #c62828;
+        }
+    </style>
+</head>
+<body>
+    <div class="error-card">
+        <h1>Error</h1>
+        <p><%= message %></p>
+        <button onclick="location.href='/'">Refresh</button>
+    </div>
+</body>
+</html>
